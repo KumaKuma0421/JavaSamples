@@ -7,7 +7,8 @@ public class Main {
         // test2();
         // test3();
         // test4();
-        test5();
+        // test5();
+        test6();
     }
 
     static void test1() {
@@ -41,5 +42,11 @@ public class Main {
         var fileName = "/home/user01/SampleText";
         test.lineWriter(fileName);
         test.lineReader(fileName);
+    }
+
+    static void test6() {
+        var test = new Execute.Sample01();
+        test.processSample(new String[] { "java", "-version" });
+        test.processSample(new String[] { "vmstat", "1", "10" });
     }
 }

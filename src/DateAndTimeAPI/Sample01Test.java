@@ -25,8 +25,18 @@ class Sample01Test extends Sample01 {
     }
 
     @Test
-    void testSample1() {
-        this.sample1();
+    void testLocalDateTime() {
+        this.getLocalDateTime();
+    }
+
+    @Test
+    void testOffsetDateTime() {
+        this.getOffsetDateTime();
+    }
+
+    @Test
+    void testZonedDateTime() {
+        this.getZonedDateTime();
     }
 
 }

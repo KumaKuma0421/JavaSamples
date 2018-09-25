@@ -1,12 +1,13 @@
 package startup;
 
+import StreamAPI.Sample02;
+
 public class Main {
 
     public static void main(String[] args) {
         // test1();
         // test2();
         // test3();
-        // test4();
         // test5();
         test6();
     }
@@ -30,11 +31,6 @@ public class Main {
     static void test3() {
         var test = new Optional.Sample01();
         test.test1();
-    }
-
-    static void test4() {
-        var test = new DateAndTimeAPI.Sample01();
-        test.sample1();
     }
 
     static void test5() {

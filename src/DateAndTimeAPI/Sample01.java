@@ -1,22 +1,18 @@
 package DateAndTimeAPI;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import java.time.Period;
 
 public class Sample01 {
-    public void getLocalDateTime() {
-        var localTime = LocalDateTime.now().toString();
-        System.out.println("LocalTime:" + localTime);
+
+    public Duration getDuration(LocalDateTime base, LocalDateTime current) {
+        var duration = Duration.between(base, current);
+        return duration;
     }
 
-    public void getOffsetDateTime() {
-        var offsetTime = OffsetDateTime.now().toString();
-        System.out.println("OffsetTime:" + offsetTime);
-    }
-
-    public void getZonedDateTime() {
-        var zonedTime = ZonedDateTime.now().toString();
-        System.out.println("ZonedTime:" + zonedTime);
+    public Period getPeriod(LocalDateTime base, LocalDateTime current) {
+        var period = Period.between(base.toLocalDate(), current.toLocalDate());
+        return period;
     }
 }

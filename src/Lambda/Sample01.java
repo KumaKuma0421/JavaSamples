@@ -17,31 +17,22 @@ public class Sample01 {
         public void show(String message);
     }
 
-    // 関数型インターフェースの実装と使用
-    public void lambdaTest() {
+    public void show(String message) {
         Out out = (msg) -> {
             System.out.println(msg);
         };
-        out.show("Hallo, Lambda");
+        out.show(message);
     }
 
     // Supplier<T> T supplier.get();
-    public Supplier<String> supplier = () -> {
+    public Supplier<String> mySupplier = () -> {
         return "supplied.";
     };
 
-    public void lambdaSupplier() {
-        System.out.println(supplier.get());
-    }
-
     // Consumer<T> void consumer.accept(T t);
-    public Consumer<String> consumer = (msg) -> {
+    public Consumer<String> myConsumer = (msg) -> {
         System.out.println(msg);
     };
-
-    public void lambdaConsumer() {
-        consumer.accept("Lambda Consumer.");
-    }
 
     // Predicate<T> boolean Predicate.test(T t);
     public Predicate<String> predicate = (msg) -> {

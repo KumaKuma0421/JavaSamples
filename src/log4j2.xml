@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="off">
 	<Properties>
-		<Property name="myPattern1">%d %p %c %M %m%n</Property>
+		<Property name="myPattern1">%d %-6p %c %M %m%n</Property>
 		<Property name="myPattern2">%d{yyyy/MM/dd HH:mm:ss.SSS} %-6p %c{10} %m%n</Property>
-		<Property name="logfile">ReadTable.log</Property>
-		<Property name="logfile-archive ">ReadTable_%d{yyyy-MM-dd}-%i.log</Property>
+		<Property name="logfile">JavaSamples.log</Property>
+		<Property name="logfile-archive">JavaSamples_%d{yyyy-MM-dd}-%i.log</Property>
 	</Properties>
 	<Appenders>
 		<Console name="STDOUT">

@@ -1,4 +1,4 @@
-package Postgres.bean;
+package Database.Bean;
 
 import java.util.Date;
 

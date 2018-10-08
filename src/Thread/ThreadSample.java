@@ -3,7 +3,7 @@ package Thread;
 import java.util.function.BiConsumer;
 import java.util.stream.IntStream;
 
-public class Sample01 {
+public class ThreadSample {
 
     private void timeWait() {
         IntStream.range(0, 10).forEach((i) -> {

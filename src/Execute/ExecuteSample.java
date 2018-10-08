@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Sample01 {
+public class ExecuteSample {
     public boolean processSample(String[] executeFile) {
         try {
             var myProcessBuilder = new ProcessBuilder(executeFile);

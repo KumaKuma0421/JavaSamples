@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 
-public class Sample01 {
+public class DateAndTimeSample {
 
     public Duration getDuration(LocalDateTime base, LocalDateTime current) {
         var duration = Duration.between(base, current);

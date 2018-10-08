@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-public class Sample01 {
+public class OptionalSample {
     HashMap<Integer, String> numStrings = new HashMap<>();
 
     public void generateData() {

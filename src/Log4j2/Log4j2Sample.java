@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Sample01 {
+public class Log4j2Sample {
     Logger myLogger = LogManager.getLogger(this.getClass());
 
     public void Test01() {

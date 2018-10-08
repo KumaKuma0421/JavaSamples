@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-public class Sample01 {
+public class LambdaSample {
 
     // 関数型インターフェースの宣言
     @FunctionalInterface

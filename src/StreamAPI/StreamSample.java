@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Sample01 {
+public class StreamSample {
 
     public Consumer<Integer> action = (i) -> {
         System.out.println(i);

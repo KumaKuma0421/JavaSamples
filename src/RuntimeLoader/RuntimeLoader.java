@@ -34,8 +34,7 @@ public class RuntimeLoader extends ClassLoader {
 
     public void add(String className, String classFileName) {
         if (classMap.containsKey(className)) {
-            System.out.println("多重登録になりました。");
-            return;
+            throw new IllegalArgumentException("多重登録になりました。");
         }
 
         try {
@@ -74,9 +73,10 @@ public class RuntimeLoader extends ClassLoader {
         return runtimeResponse;
     }
 
-    public Object invoke(RuntimeResponse runtimeResponse, String className, String methodName, Class<?>[] paramTypesMethod,
-            Object[] argsMethod) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
-            InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public Object invoke(RuntimeResponse runtimeResponse, String className, String methodName,
+            Class<?>[] paramTypesMethod, Object[] argsMethod)
+            throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException,
+            IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         var myMethod = runtimeResponse.runtime.getMethod(methodName, paramTypesMethod);
         var response = myMethod.invoke(runtimeResponse.instance, argsMethod);
 

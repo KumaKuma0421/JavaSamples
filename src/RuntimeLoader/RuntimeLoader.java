@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RuntimeLoader extends ClassLoader {
-    private Map<String, byte[]> classMap = new HashMap<String, byte[]>();
+    private Map<String, byte[]> classMap;
+    private Map<String, Class<?>> objectMap;
 
     public class RuntimeResponse {
         public Class<?> runtime;
@@ -30,35 +31,35 @@ public class RuntimeLoader extends ClassLoader {
     }
 
     public RuntimeLoader() {
+        classMap = new HashMap<String, byte[]>();
+        objectMap = new HashMap<String, Class<?>>();
     }
 
-    public void add(String className, String classFileName) {
+    public void add(String className, String classFileName)
+            throws IllegalArgumentException, FileNotFoundException, IOException {
         if (classMap.containsKey(className)) {
             throw new IllegalArgumentException("多重登録になりました。");
         }
 
-        try {
-            var file = new File(classFileName);
-            var length = file.length();
-            var fis = new FileInputStream(file);
-            var bis = new BufferedInputStream(fis);
-            var dis = new DataInputStream(bis);
-            var binary = new byte[(int) length];
+        var file = new File(classFileName);
+        var length = file.length();
+        var fis = new FileInputStream(file);
+        var bis = new BufferedInputStream(fis);
+        var dis = new DataInputStream(bis);
+        var binary = new byte[(int) length];
 
-            for (int i = 0; i < length; i++) {
-                binary[i] = dis.readByte();
-            }
-
-            classMap.put(className, binary);
-
-            dis.close();
-            bis.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (int i = 0; i < length; i++) {
+            binary[i] = dis.readByte();
         }
+
+        // TODO:ふと思いましたが、バイナリを保存するより
+        // インスタンスをもう作って保存した方が、早いのでは
+        // ないでしょうか…。
+        classMap.put(className, binary);
+
+        dis.close();
+        bis.close();
+        fis.close();
     }
 
     public RuntimeResponse getInstance(String className, Class<?>[] paramTypesConstructor, Object[] paramConstructor)
@@ -84,12 +85,20 @@ public class RuntimeLoader extends ClassLoader {
     }
 
     @Override
-    protected Class<?> findClass(String className) throws ClassNotFoundException {
+    public Class<?> findClass(String className) throws ClassNotFoundException {
+        var response = this.objectMap.get(className);
+        if (response != null) {
+            return response;
+        }
+
         var binary = this.classMap.get(className);
         if (binary == null) {
             throw new ClassNotFoundException(className);
         }
 
-        return defineClass(null, binary, 0, binary.length);
+        response = defineClass(className, binary, 0, binary.length);
+        this.objectMap.put(className, response);
+
+        return response;
     }
 }

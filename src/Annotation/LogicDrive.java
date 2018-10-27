@@ -39,6 +39,9 @@ public class LogicDrive {
     }
 
     public boolean callFunction(int stream, int function) {
+        // TODO:途中
+        this.runtimeLoader.findByAnnotation(1, 1);
+
         return false;
     }
 }

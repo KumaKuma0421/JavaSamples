@@ -21,8 +21,9 @@ public class WorkerThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             consumer.accept(this.sync, this.msg);
         }
+        this.sync.finish();
     }
 }
